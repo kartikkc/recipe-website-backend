@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const cors = require("cors");
 const User = require("./models/users.model");
 const connectToDB = require("./db");
 const routes = require("./routes/index");
@@ -16,6 +17,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+app.use(cors());
 
 // Database Connection
 connectToDB();
