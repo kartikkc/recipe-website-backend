@@ -53,8 +53,9 @@ async function deleteRecipe(req, res) {
 
 async function updateRecipe(req, res) {
     try {
+        const { id } = req.params;
         const { name, ingredient, process, newName } = req.body;
-        const findRecipe = await Recipe.findOne({ name: name });
+        const findRecipe = await Recipe.findById(id);
         if (findRecipe) {
             const updatedRecipe = new Recipe({
                 _id: findRecipe._id,

@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/all", fetchuser, async (req, res) => { getAllRecipes(req, res) });
 router.post("/add", fetchuser, isAdmin, async (req, res) => { addRecipe(req, res) });
 router.delete("/delete", fetchuser, isAdmin, async (req, res) => { deleteRecipe(req, res) });
-router.put("/update", fetchuser, isAdmin, async (req, res) => { updateRecipe(req, res) });
+router.put("/update/:id", fetchuser, isAdmin, async (req, res) => { updateRecipe(req, res) });
 
 module.exports = router;
