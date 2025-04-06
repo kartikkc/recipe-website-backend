@@ -33,6 +33,24 @@ async function addRecipe(req, res) {
     }
 };
 
+
+async function getOneRecipe(req, res) {
+    try {
+        const { id } = req.params;
+        const recipeFound = await Recipe.findById(id);
+        if (recipeFound) {
+            return res.status(200).json(recipeFound);
+        }
+        else {
+            return res.status(404).json("Recipe Not Found");
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json("Internal Server Error");
+    }
+}
+
+
 async function deleteRecipe(req, res) {
     try {
         const { id } = req.params;
@@ -73,6 +91,7 @@ async function updateRecipe(req, res) {
 
 module.exports = {
     getAllRecipes,
+    getOneRecipe,
     addRecipe,
     deleteRecipe,
     updateRecipe
