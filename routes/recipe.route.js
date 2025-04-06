@@ -1,6 +1,6 @@
 const express = require("express");
 const { fetchuser, isAdmin } = require("../middleware/auth.middleware");
-const { getAllRecipes, addRecipe, deleteRecipe, updateRecipe } = require("../controllers/recipe.controller");
+const { getAllRecipes, getOneRecipe, addRecipe, deleteRecipe, updateRecipe } = require("../controllers/recipe.controller");
 const router = express.Router();
 
 router.get("/all", fetchuser, async (req, res) => { getAllRecipes(req, res) });
