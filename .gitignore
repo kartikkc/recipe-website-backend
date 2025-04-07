@@ -1,3 +1,5 @@
 node_modules
 .env
 .vscode
+yumvault.recipes.csv
+yumvault.users.csv

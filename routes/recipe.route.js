@@ -4,7 +4,7 @@ const { getAllRecipes, getOneRecipe, addRecipe, deleteRecipe, updateRecipe } = r
 const router = express.Router();
 
 router.get("/all", fetchuser, async (req, res) => { getAllRecipes(req, res) });
-router.get("/one/:id", fetchuser, isAdmin, async (req, res) => { getOneRecipe(req, res) });
+router.get("/one/:id", fetchuser, async (req, res) => { getOneRecipe(req, res) });
 router.post("/add", fetchuser, isAdmin, async (req, res) => { addRecipe(req, res) });
 router.delete("/delete/:id", fetchuser, isAdmin, async (req, res) => { deleteRecipe(req, res) });
 router.put("/update/:id", fetchuser, isAdmin, async (req, res) => { updateRecipe(req, res) });
