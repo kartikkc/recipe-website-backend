@@ -13,7 +13,7 @@ async function getAllRecipes(req, res) {
 
 async function addRecipe(req, res) {
     try {
-        const { name, ingredient, process } = req.body;
+        const { name, ingredient, process, image } = req.body;
         const recipeFound = await Recipe.findOne({ name: name });
         if (recipeFound) {
             return res.status(403).json("Already Exists");
@@ -23,6 +23,7 @@ async function addRecipe(req, res) {
                 name: name,
                 ingredient: ingredient,
                 process: process,
+                image: image,
             });
             await newRecipe.save();
             return res.status(201).json("Recipe Saved Successfully");
@@ -71,7 +72,7 @@ async function deleteRecipe(req, res) {
 async function updateRecipe(req, res) {
     try {
         const { id } = req.params;
-        const { name, ingredient, process, newName } = req.body;
+        const { name, ingredient, process, newName, image } = req.body;
         const findRecipe = await Recipe.findById(id);
         if (findRecipe) {
             const updatedRecipe = new Recipe({
@@ -79,6 +80,7 @@ async function updateRecipe(req, res) {
                 name: newName,
                 ingredient: findRecipe.ingredient + ingredient,
                 process: findRecipe.process + process,
+                image: image
             });
             await Recipe.findByIdAndUpdate(findRecipe._id, { $set: updatedRecipe }, { new: true });
             return res.status(200).json("Recipe Updated Sucessfully");
