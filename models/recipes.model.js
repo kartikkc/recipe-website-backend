@@ -13,6 +13,9 @@ const RecipeSchema = new mongoose.Schema({
     process:{
         type: String,
         required: true
+    },
+    image:{
+        type: String,
     }
 });
 
